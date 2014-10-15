@@ -26,6 +26,9 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+TEMPLATE_DIRS = (
+    'templates',
+)
 
 # Application definition
 
@@ -36,6 +39,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrap_toolkit',
+    'bootstrapform',
+    'users',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -77,6 +83,9 @@ USE_L10N = True
 USE_TZ = True
 
 
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 

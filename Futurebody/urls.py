@@ -1,10 +1,11 @@
-from django.conf.urls import include, url
+from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
-urlpatterns = [
-    # Examples:
-    # url(r'^$', 'Futurebody.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
+from Futurebody.views import Home
 
+urlpatterns = patterns(
+    '',
+    url(r'^$', Home.as_view(), name='home'),
+    url(r'^users/', include('users.urls', namespace='users_app')),
     url(r'^admin/', include(admin.site.urls)),
-]
+)

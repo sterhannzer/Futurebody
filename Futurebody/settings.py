@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'bootstrap_toolkit',
     'bootstrapform',
     'users',
+    'card',
 )
 
 MIDDLEWARE_CLASSES = (

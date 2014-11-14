@@ -10,22 +10,14 @@
         <tr>
             <th>Imię</th>
             <th>Nazwisko</th>
-            <th>Szczegóły</th>
-            <th>Edycja</th>
+            <th>Karnet</th>
         </tr>
         {% for user in users %}
             <tr>
                 <td>{{ user.name }}</td>
                 <td>{{ user.surname }}</td>
                 <td>
-                    <a href="{% url 'users_app:details' user.id %}"><button type="button" class="btn btn-success btn-sm">Szczegóły</button></a>
-                </td>
-                <td><a href="{% url 'users_app:edit' user.id %}">
-                        <button type="button" class="btn btn-warning btn-sm">
-                            <span class="glyphicon glyphicon-pencil"></span>
-                            Edytuj
-                        </button>
-                    </a>
+                    <a href="{% url 'users_app:details' user.id %}"><button type="button" class="btn btn-success btn-sm">Dodaj karnet</button></a>
                 </td>
             </tr>
         {% endfor %}

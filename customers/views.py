@@ -3,8 +3,8 @@ from django.views.generic import TemplateView, FormView
 from django.views.generic.edit import UpdateView
 from django.core.urlresolvers import reverse_lazy
 from datetime import datetime, timedelta
-from users.forms import UserForm
-from users.models import User
+from customers.forms import UserForm
+from customers.models import Customer
 
 
 class UsersIndex(TemplateView):
@@ -12,7 +12,7 @@ class UsersIndex(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(UsersIndex, self).get_context_data(**kwargs)
-        context['users'] = User.objects.all()
+        context['users'] = Customer.objects.all()
         return context
 
 
@@ -39,7 +39,7 @@ class UsersShow(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(UsersShow, self).get_context_data(**kwargs)
-        context['users'] = User.objects.get(id=kwargs['id'])
+        context['users'] = Customer.objects.get(id=kwargs['id'])
         user = context['users']
         date_finish_card = user.card.date_of_finish - datetime.now().date()
         context['card'] = user.card
@@ -49,7 +49,7 @@ class UsersShow(TemplateView):
 
 
 class UpdateUser(UpdateView):
-    model = User
+    model = Customer
     template_name = 'Users/add.html'
     pk_url_kwarg = "id"
     success_url = reverse_lazy('users_app:user')

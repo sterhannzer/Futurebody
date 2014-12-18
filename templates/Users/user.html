@@ -1,34 +1,42 @@
-{% extends "base.html" %}
 
+{% extends "base.html" %}
 {% block content %}
     <div>
         <a href="{% url 'users_app:add' %}" class="btn btn-primary" role="button">Dodaj nowego klienta</a>
     </div>
 
     <h3>Klienci:</h3>
-    <table class="table table-striped">
-        <tr>
-            <th>Imię</th>
-            <th>Nazwisko</th>
-            <th>Szczegóły</th>
-            <th>Edycja</th>
-        </tr>
-        {% for user in users %}
+    <table id="example" class="display" width="100%" cellspacing="0">
+        <thead>
             <tr>
-                <td>{{ user.name }}</td>
-                <td>{{ user.surname }}</td>
-                <td>
-                    <a href="{% url 'users_app:details' user.id %}"><button type="button" class="btn btn-success btn-sm">Szczegóły</button></a>
-                </td>
-                <td><a href="{% url 'users_app:edit' user.id %}">
-                        <button type="button" class="btn btn-warning btn-sm">
-                            <span class="glyphicon glyphicon-pencil"></span>
-                            Edytuj
-                        </button>
-                    </a>
-                </td>
-            </tr>
-        {% endfor %}
+                <th>Imię</th>
+                <th>Nazwisko</th>
+                <th>Kod kreskowy</th>
+                <th>Szczegóły</th>
+                <th>Edycja</th>
 
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.surname }}</td>
+                    <td>{{ user.barcode }}</td>
+                    <td>
+                        <a href="{% url 'users_app:details' user.id %}"><button type="button" class="btn btn-success btn-sm">Szczegóły</button></a>
+                    </td>
+                    <td><a href="{% url 'users_app:edit' user.id %}">
+                            <button type="button" class="btn btn-warning btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                Edytuj
+                            </button>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
     </table>
+
+
 {% endblock %}

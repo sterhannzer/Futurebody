@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, url
 from django.contrib import admin
 from card.views import AddCard, CardEdit
-from users.views import UsersIndex, AddUser, UsersShow
+from customers.views import UsersIndex, AddUser, UsersShow
 
 admin.autodiscover()
 

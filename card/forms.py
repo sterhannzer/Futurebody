@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from django.forms import ModelForm
+from django.forms import ModelForm, TextInput
 from card.models import Card
 
 
@@ -13,3 +13,14 @@ class CardForm(ModelForm):
             'date_of_purchase',
             'date_of_finish',
         ]
+        labels = {
+            'name': 'Nazwa',
+            'type': 'Typ',
+            'price': 'Cena',
+            'date_of_purchase': 'Data zakupu',
+            'date_of_finish':  'Data wygaśnięcia'
+        }
+        widgets = {
+            'name': TextInput(attrs={'placeholder': 'Nazwa'}),
+            'price': TextInput(attrs={'placeholder': 'Cena'})
+        }

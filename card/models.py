@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
+
 from django.db import models
 from datetime import datetime, timedelta
+from customers.models import Customer
+
 
 CHOICES_TYPE = (
     ('OPEN MESKI (169zl)', 'OPEN MĘSKI (169zł)'),
@@ -13,12 +16,14 @@ CHOICES_TYPE = (
 
 )
 
+
 class Card(models.Model):
     name = models.CharField(max_length=128)
     type = models.CharField(max_length=100, choices=CHOICES_TYPE)
     price = models.IntegerField()
-    date_of_purchase = models.DateField(default=datetime.now())
-    date_of_finish = models.DateField(default=datetime.now()+timedelta(days=30))
+    customer = models.ForeignKey(Customer)
+    date_of_purchase = models.DateField()
+    date_of_finish = models.DateField()
 
     def __unicode__(self):
         return self.name

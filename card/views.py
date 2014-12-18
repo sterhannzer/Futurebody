@@ -1,14 +1,16 @@
 from django.views.generic import FormView, UpdateView
 from django.core.urlresolvers import reverse_lazy
+from datetime import datetime, timedelta
+
 from card.forms import CardForm
 from card.models import Card
-from users.models import User
 
 
 class AddCard(FormView):
     template_name = "Cards/add.html"
     form_class = CardForm
     success_url = reverse_lazy('users_app:add')
+    initial = {'date_of_purchase': datetime.now(), 'date_of_finish': datetime.now()+timedelta(days=30)}
 
     def form_valid(self, form):
         form.save()
@@ -27,5 +29,8 @@ class CardEdit(UpdateView):
         'date_of_purchase',
         'date_of_finish'
     ]
+
+    def get_initial(self):
+        return {'date_of_purchase': datetime.now(), 'date_of_finish': datetime.now()+timedelta(days=30)}
 
 

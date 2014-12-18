@@ -14,7 +14,7 @@ class AddCard(FormView):
 
     def form_valid(self, form):
         form.save()
-        return super(AddCard, self).form_invalid(form)
+        return super(AddCard, self).form_valid(form)
 
 
 class CardEdit(UpdateView):

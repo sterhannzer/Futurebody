@@ -23,7 +23,7 @@ class AddUser(FormView):
 
     def form_valid(self, form):
         form.save()
-        return super(AddUser, self).form_invalid(form)
+        return super(AddUser, self).form_valid(form)
 
 
 class UsersShow(TemplateView):

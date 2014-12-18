@@ -10,7 +10,6 @@ class UserForm(ModelForm):
             'name',
             'surname',
             'barcode',
-            'card'
         ]
         widgets = {
         'name': TextInput(attrs={'placeholder': 'Imię klienta', 'class': ''}),

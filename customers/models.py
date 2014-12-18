@@ -1,5 +1,4 @@
 from django.db import models
-from card.models import Card
 
 
 class Customer(models.Model):

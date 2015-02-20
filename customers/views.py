@@ -2,7 +2,8 @@
 from django.views.generic import TemplateView, FormView
 from django.views.generic.edit import UpdateView
 from django.core.urlresolvers import reverse_lazy
-from datetime import datetime, timedelta
+from datetime import datetime
+from card.models import Card
 from customers.forms import UserForm
 from customers.models import Customer
 
@@ -19,11 +20,11 @@ class UsersIndex(TemplateView):
 class AddUser(FormView):
     template_name = 'Users/add.html'
     form_class = UserForm
-    success_url = reverse_lazy('users_app:user')
+    success_url = reverse_lazy('cards_app:add')
 
     def form_valid(self, form):
         form.save()
-        return super(AddUser, self).form_invalid(form)
+        return super(AddUser, self).form_valid(form)
 
 
 class UsersShow(TemplateView):
@@ -41,10 +42,13 @@ class UsersShow(TemplateView):
         context = super(UsersShow, self).get_context_data(**kwargs)
         context['users'] = Customer.objects.get(id=kwargs['id'])
         user = context['users']
-        date_finish_card = user.card.date_of_finish - datetime.now().date()
-        context['card'] = user.card
-        context['days'] = self.how_many_days(date_finish_card)
-        context['active'] = user.card.date_of_finish > datetime.now().date()
+        context['cards'] = Card.objects.filter(customer=user)
+        cards = context['cards']
+        for card in cards:
+            date_finish_card = card.date_of_finish - datetime.now().date()
+            card.days = self.how_many_days(date_finish_card)
+        #context['active'] = user.card.date_of_finish > datetime.now().date()
+
         return context
 
 
@@ -57,6 +61,5 @@ class UpdateUser(UpdateView):
         'name',
         'surname',
         'barcode',
-        'card'
     ]
 

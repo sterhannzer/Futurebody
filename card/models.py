@@ -18,12 +18,12 @@ CHOICES_TYPE = (
 
 
 class Card(models.Model):
-    name = models.CharField(max_length=128)
     type = models.CharField(max_length=100, choices=CHOICES_TYPE)
     price = models.IntegerField()
+    days = models.CharField(max_length=100, blank=True, null=True)
     customer = models.ForeignKey(Customer)
     date_of_purchase = models.DateField()
     date_of_finish = models.DateField()
 
     def __unicode__(self):
-        return self.name
+        return self.type

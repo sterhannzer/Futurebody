@@ -7,20 +7,19 @@ class CardForm(ModelForm):
     class Meta:
         model = Card
         fields = [
-            'name',
             'type',
+            'customer',
             'price',
             'date_of_purchase',
             'date_of_finish',
         ]
         labels = {
-            'name': 'Nazwa',
             'type': 'Typ',
+            'customer': 'Klient',
             'price': 'Cena',
             'date_of_purchase': 'Data zakupu',
             'date_of_finish':  'Data wygaśnięcia'
         }
         widgets = {
-            'name': TextInput(attrs={'placeholder': 'Nazwa'}),
             'price': TextInput(attrs={'placeholder': 'Cena'})
         }

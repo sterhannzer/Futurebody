@@ -9,12 +9,12 @@ from card.models import Card
 class AddCard(FormView):
     template_name = "Cards/add.html"
     form_class = CardForm
-    success_url = reverse_lazy('users_app:add')
+    success_url = reverse_lazy('users_app:user')
     initial = {'date_of_purchase': datetime.now(), 'date_of_finish': datetime.now()+timedelta(days=30)}
 
     def form_valid(self, form):
         form.save()
-        return super(AddCard, self).form_invalid(form)
+        return super(AddCard, self).form_valid(form)
 
 
 class CardEdit(UpdateView):
@@ -23,7 +23,6 @@ class CardEdit(UpdateView):
     template_name = 'Cards/add.html'
     pk_url_kwarg = 'id'
     fields = [
-        'name',
         'type',
         'price',
         'date_of_purchase',
@@ -32,5 +31,3 @@ class CardEdit(UpdateView):
 
     def get_initial(self):
         return {'date_of_purchase': datetime.now(), 'date_of_finish': datetime.now()+timedelta(days=30)}
-
-

@@ -8,5 +8,5 @@ admin.autodiscover()
 urlpatterns = patterns(
     '',
     url(r'^add/$', AddCard.as_view(), name='add'),
-    url(r'^(?P<id>\d+)/$', CardEdit.as_view(), name='edit'),
+    url(r'^edit/(?P<id>\d+)/$', CardEdit.as_view(), name='edit'),
 )

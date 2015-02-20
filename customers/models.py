@@ -7,4 +7,4 @@ class Customer(models.Model):
     barcode = models.IntegerField()
 
     def __unicode__(self):
-        return self.name
+        return self.name + self.surname + " " + str(self.barcode)

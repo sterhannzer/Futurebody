@@ -1,4 +1,4 @@
-from django.views.generic import FormView, UpdateView
+from django.views.generic import FormView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from datetime import datetime, timedelta
 
@@ -31,3 +31,10 @@ class CardEdit(UpdateView):
 
     def get_initial(self):
         return {'date_of_purchase': datetime.now(), 'date_of_finish': datetime.now()+timedelta(days=30)}
+
+
+class CardDelete(DeleteView):
+    model = Card
+    success_url = reverse_lazy('users_app:user')
+    pk_url_kwarg = 'id'
+    template_name = 'Cards/delete.html'

@@ -47,8 +47,6 @@ class UsersShow(TemplateView):
         for card in cards:
             date_finish_card = card.date_of_finish - datetime.now().date()
             card.days = self.how_many_days(date_finish_card)
-        #context['active'] = user.card.date_of_finish > datetime.now().date()
-
         return context
 
 

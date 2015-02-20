@@ -50,7 +50,14 @@
                 </div>
                 <div class="col-xs-6 col-md-3">
                     <a href="{% url 'cards_app:edit' card.id %}">
-                        Edytuj
+                        <button class="btn btn-warning">
+                            Edytuj
+                        </button>
+                    </a>
+                    <a href="{% url 'cards_app:delete' card.id %}">
+                        <button class="btn btn-danger">
+                            Usuń
+                        </button>
                     </a>
                 </div>
             </div>

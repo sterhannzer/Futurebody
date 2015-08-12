@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div>
+        <a href="{% url 'users_app:add' %}" class="btn btn-primary" role="button">Dodaj nowego klienta</a>
+    </div>
+
+    <h3>Klienci:</h3>
+    <table class="table table-striped">
+        <tr>
+            <th>Imię</th>
+            <th>Nazwisko</th>
+            <th>Karnet</th>
+        </tr>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.name }}</td>
+                <td>{{ user.surname }}</td>
+                <td>
+                    <a href="{% url 'users_app:details' user.id %}"><button type="button" class="btn btn-success btn-sm">Dodaj karnet</button></a>
+                </td>
+            </tr>
+        {% endfor %}
+
+    </table>
+{% endblock %}

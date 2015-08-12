@@ -9,13 +9,29 @@
 
         <title>Futurebody - ClientCard</title>
 
+
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js" type="text/javascript"></script>
+
+        <script src="http://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js" type="text/javascript"></script>
+
+        <script type="text/javascript" charset="utf-8">
+            $(document).ready(function() {
+                $('#example').DataTable( {
+                    "ordering": false,
+                    "info":     false,
+                    "paging":   false,
+
+                } );
+            } );
+        </script>
+
         <!-- Bootstrap core CSS -->
         <link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet">
+        <link href="http://cdn.datatables.net/1.10.4/css/jquery.dataTables.css" rel="stylesheet">
         <!-- Custom styles for this template -->
-        <link href="{{ STATIC_URL }}css/sticky-footer-navbar.css" rel="stylesheet">
-        <link href="{{ STATIC_URL }}css/forms.css" rel="stylesheet">
-    </head>
 
+
+    </head>
     <body>
 
         <div class="container">
@@ -33,12 +49,13 @@
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
-                            <li class=""><a href="{% url 'users_app:user' %}">Karnety</a></li>
-                            <li><a href="#"></a></li>
+                            <li class=""><a href="{% url 'users_app:user' %}">Klienci</a></li>
+                            <li><a href="{% url 'cards_app:add' %}">Dodaj karnet</a></li>
                         </ul>
                     </div>
                 </div><!--/.container-fluid -->
             </div>
+
 
             {% block content %}
 
@@ -48,14 +65,14 @@
         <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="../../dist/js/bootstrap.min.js"></script>
+
 
     </body>
 
     <div id="footer">
         <div class="container">
             <!--<p class="text-muted credit"></p> -->
+
         </div>
     </div>
 </html>

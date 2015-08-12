@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div style="margin-left: 2%">
+        <h3>Dane klienta:</h3>
+        <div class="row">
+            <div class="col-xs-6 col-md-3">
+                <strong><span class="glyphicon glyphicon-user"></span> Imię i nazwisko:</strong>
+                <h4> {{ users.name }} {{ users.surname }}</h4>
+            </div>
+
+            <div class="col-xs-6 col-md-3">
+                <strong><span class="glyphicon glyphicon-barcode"></span> Numer kodu kreskowego:</strong>
+                <h4> {{ users.barcode }} </h4>
+            </div>
+        </div>
+        <br>
+        <h3>Karnety klienta:</h3>
+        {% for card in cards %}
+            <div class="row">
+                <div class="col-xs-6 col-md-3">
+                    <strong><span class="glyphicon glyphicon-calendar"></span> Karnet ważny jeszcze:</strong>
+                    <h4 >
+                        {% if card.days != "0 dni" %}
+                            <button type="button" class="btn btn-success btn-md active">{{ card.days }}</button>
+                        {% else %}
+                            <button type="button" class="btn btn-danger btn-md active">{{ card.days }}</button>
+                        {% endif %}
+                    </h4>
+                </div>
+                <div class="col-xs-6 col-md-3">
+                    <strong><span class="glyphicon glyphicon-calendar"></span> Data zakupu karnetu:</strong>
+                    <h4> {{ card.date_of_purchase }} </h4>
+                </div>
+
+                <div class="col-xs-6 col-md-3">
+                    <strong><span class="glyphicon glyphicon-calendar"></span> Data wygaśnięcia karnetu:</strong>
+                    <h4> {{ card.date_of_finish }} </h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 col-md-3">
+                    <strong><span class="glyphicon glyphicon-align-justify"></span> Typ karnetu:</strong>
+                    <h4> {{ card.type }} </h4>
+                </div>
+
+                <div class="col-xs-6 col-md-3">
+                    <strong><span class="glyphicon glyphicon-euro"></span> Cena karnetu:</strong>
+                    <h4> {{ card.price }} </h4>
+                </div>
+                <div class="col-xs-6 col-md-3">
+                    <a href="{% url 'cards_app:edit' card.id %}">
+                        <button class="btn btn-warning">
+                            Edytuj
+                        </button>
+                    </a>
+                    <a href="{% url 'cards_app:delete' card.id %}">
+                        <button class="btn btn-danger">
+                            Usuń
+                        </button>
+                    </a>
+                </div>
+            </div>
+            <br><br>
+        {% endfor %}
+    </div>
+    <br>
+{% endblock %}

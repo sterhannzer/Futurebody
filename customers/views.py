@@ -41,8 +41,7 @@ class UsersShow(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(UsersShow, self).get_context_data(**kwargs)
         context['users'] = Customer.objects.get(id=kwargs['id'])
-        user = context['users']
-        context['cards'] = Card.objects.filter(customer=user)
+        context['cards'] = Card.objects.filter(customer=context['users'])
         cards = context['cards']
         for card in cards:
             date_finish_card = card.date_of_finish - datetime.now().date()

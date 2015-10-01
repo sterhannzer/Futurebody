@@ -68,3 +68,7 @@ docs/_build/
 # Databases
 *.sqlite3
 *.sql
+
+#osx
+.DS_Store
+.DS_Store?

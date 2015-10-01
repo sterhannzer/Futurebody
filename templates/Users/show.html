@@ -48,15 +48,11 @@
                     <h4> {{ card.price }} </h4>
                 </div>
                 <div class="col-xs-6 col-md-3">
-                    <a href="{% url 'cards_app:edit' card.id %}">
-                        <button class="btn btn-warning">
-                            Edytuj
-                        </button>
+                    <a class="btn btn-warning" href="{% url 'cards_app:edit' card.id %}">
+                        Edytuj
                     </a>
-                    <a href="{% url 'cards_app:delete' card.id %}">
-                        <button class="btn btn-danger">
-                            Usuń
-                        </button>
+                    <a class="btn btn-danger" href="{% url 'cards_app:delete' card.id %}">
+                        Usuń
                     </a>
                 </div>
             </div>
@@ -85,15 +81,11 @@
                     <h4> {{ card.price }} </h4>
                 </div>
                 <div class="col-xs-6 col-md-3">
-                    <a href="{% url 'cards_app:edit_entrance' card.id %}">
-                        <button class="btn btn-warning">
-                            Edytuj
-                        </button>
+                    <a class="btn btn-warning" href="{% url 'cards_app:edit_entrance' card.id %}">
+                        Edytuj
                     </a>
-                    <a href="{% url 'cards_app:delete_entrance' card.id %}">
-                        <button class="btn btn-danger">
+                    <a class="btn btn-danger" href="{% url 'cards_app:delete_entrance' card.id %}">
                             Usuń
-                        </button>
                     </a>
                 </div>
             </div>

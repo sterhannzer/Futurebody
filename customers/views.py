@@ -40,9 +40,11 @@ class UsersShow(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(UsersShow, self).get_context_data(**kwargs)
-        context['users'] = Customer.objects.get(id=kwargs['id'])
+        user = Customer.objects.get(id=kwargs['id'])
+        context['users'] = user
         context['cards'] = Card.objects.filter(customer=context['users'])
         context['entry_cards'] = CardEntrance.objects.filter(customer=context['users'])
+        #context['entry_cards'] = user.objects.set_cardentrances.all()
         cards = context['cards']
         for card in cards:
             date_finish_card = card.date_of_finish - datetime.now().date()

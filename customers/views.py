@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView, FormView
 from django.views.generic.edit import UpdateView
 from django.core.urlresolvers import reverse_lazy
@@ -6,6 +7,7 @@ from datetime import datetime
 from card.models import Card, CardEntrance
 from customers.forms import UserForm
 from customers.models import Customer
+import pdb
 
 
 class UsersIndex(TemplateView):
@@ -41,9 +43,9 @@ class UsersShow(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(UsersShow, self).get_context_data(**kwargs)
         user = Customer.objects.get(id=kwargs['id'])
-        context['users'] = user
-        context['cards'] = Card.objects.filter(customer=context['users'])
-        context['entry_cards'] = CardEntrance.objects.filter(customer=context['users'])
+        context['user'] = user
+        context['cards'] = Card.objects.filter(customer=context['user'])
+        context['entry_cards'] = CardEntrance.objects.filter(customer=context['user'])
         #context['entry_cards'] = user.objects.set_cardentrances.all()
         cards = context['cards']
         for card in cards:
@@ -63,3 +65,17 @@ class UpdateUser(UpdateView):
         'barcode',
     ]
 
+
+class UpdateNote(UpdateView):
+    model = Customer
+    template_name = 'Users/edit_note.html'
+    pk_url_kwarg = "id"
+    fields = [
+        'note'
+    ]
+
+    def form_valid(self, form):
+        form.save()
+        return HttpResponseRedirect(
+            reverse_lazy('users_app:details', kwargs={'id': form.instance.id})
+        )

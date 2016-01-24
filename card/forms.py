@@ -3,7 +3,6 @@ from django.forms import ModelForm, TextInput
 from card.models import Card, CardEntrance
 
 
-
 class CardForm(ModelForm):
     class Meta:
         model = Card

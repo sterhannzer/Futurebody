@@ -13,7 +13,6 @@ CHOICES_CARD_TYPE = (
     ('SZKOLNY (69zl)', 'SZKOLNY (69zł)'),
     ('OPEN_K (99zl)', 'OPEN KOBIETY (99zł)'),
     ('WEJSCIOWY', 'WEJŚCIOWY'),
-
 )
 
 

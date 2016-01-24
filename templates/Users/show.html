@@ -6,12 +6,22 @@
         <div class="row">
             <div class="col-xs-6 col-md-3">
                 <strong><span class="glyphicon glyphicon-user"></span> Imię i nazwisko:</strong>
-                <h4> {{ users.name }} {{ users.surname }}</h4>
+                <h4> {{ user.name }} {{ user.surname }}</h4>
             </div>
 
             <div class="col-xs-6 col-md-3">
                 <strong><span class="glyphicon glyphicon-barcode"></span> Numer kodu kreskowego:</strong>
-                <h4> {{ users.barcode }} </h4>
+                <h4> {{ user.barcode }} </h4>
+            </div>
+
+            <div class="col-xs-6 col-md-3">
+                    <strong>
+                        <a class="glyphicon glyphicon-comment"
+                           href="{% url 'users_app:edit_note' user.id %}"></a>
+                        Notatka:
+                    </strong>
+                    <h4> {{ user.note }} </h4>
+
             </div>
         </div>
         <br>

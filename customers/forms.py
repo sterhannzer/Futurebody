@@ -17,7 +17,7 @@ class UserForm(ModelForm):
             'barcode': ''
         }
         widgets = {
-        'name': TextInput(attrs={'label': "", 'placeholder': 'Imię klienta', 'class': ''}),
-        'surname': TextInput(attrs={'placeholder': 'Nazwisko klienta'}),
-        'barcode': TextInput(attrs={'placeholder': 'Kod kreskowy'})
+            'name': TextInput(attrs={'label': "", 'placeholder': 'Imię klienta', 'class': ''}),
+            'surname': TextInput(attrs={'placeholder': 'Nazwisko klienta'}),
+            'barcode': TextInput(attrs={'placeholder': 'Kod kreskowy'})
         }

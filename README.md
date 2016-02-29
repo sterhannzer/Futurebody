@@ -1,4 +1,4 @@
-#Futurebody - client cards app in Django
+#Client cards app in Django for gym
 Own project
 
 | **Add client**

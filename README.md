@@ -1,5 +1,5 @@
-#Client cards app in Django for gym
-Own project
+#Client cards app for gym
+Own project in Django 
 
 | **Add client**
 | **Add cards** 
